@@ -28,7 +28,7 @@ npm run dev             # http://localhost:5175
 For a local API, start it with an admin token and allow this origin:
 
 ```sh
-ADMIN_TOKEN=<32+ characters> CORS_ORIGINS=http://localhost:5175 npm run dev:api
+ADMIN_TOKEN=<32+ characters> ADMIN_URL=http://localhost:5175 npm run dev:api
 ```
 
 ## Deploy (Vercel)
@@ -40,8 +40,8 @@ ADMIN_TOKEN=<32+ characters> CORS_ORIGINS=http://localhost:5175 npm run dev:api
 4. On the API host (Render):
    - set `ADMIN_TOKEN` to a long random value:
      `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"`
-   - add the admin site's address to `CORS_ORIGINS`, e.g.
-     `https://oryne.org,https://admin.oryne.org`
+   - set `ADMIN_URL` to this site's address, e.g. `https://adminweb.oryne.org`;
+     the API always allows it, separately from `CORS_ORIGINS`
 
 Keep the token in a password manager; anyone with it can read every account's
 data.

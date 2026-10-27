@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { SignInField } from './components/SignInField'
 import { AdminContext } from './components/ui'
 import { adminGet, API_URL, loadToken, saveToken } from './lib/api'
 import { useTheme } from './lib/theme'
@@ -34,8 +35,12 @@ function SignIn({ onSignedIn, error: initialError }: { onSignedIn: (token: strin
   }
 
   return (
-    <main className="flex min-h-svh items-center justify-center px-4 py-16">
-      <form onSubmit={submit} className="w-full max-w-sm border border-line bg-surface p-8">
+    <main className="grid min-h-svh lg:grid-cols-2">
+      <div className="relative hidden overflow-hidden bg-ink lg:block">
+        <SignInField className="absolute inset-0 size-full" />
+      </div>
+      <div className="flex items-center justify-center px-5 py-16">
+      <form onSubmit={submit} className="w-full max-w-sm">
         <p className="text-center text-[0.9375rem] font-medium uppercase tracking-[0.34em]">Oryne</p>
         <h1 className="mt-6 text-center text-2xl tracking-[-0.02em]">Admin</h1>
         <p className="mt-2 text-center text-sm text-muted">Sign in with the admin token.</p>
@@ -65,6 +70,7 @@ function SignIn({ onSignedIn, error: initialError }: { onSignedIn: (token: strin
           {API_URL}
         </p>
       </form>
+      </div>
     </main>
   )
 }

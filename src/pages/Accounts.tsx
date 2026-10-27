@@ -14,7 +14,7 @@ type Account = {
   lastSeen: number | null
 }
 
-const providerLabel: Record<string, string> = { google: 'Google', github: 'GitHub', freighter: 'Freighter', dev: 'Test user' }
+const providerLabel: Record<string, string> = { google: 'Google', github: 'GitHub', email: 'Email', freighter: 'Freighter', dev: 'Test user' }
 
 export default function Accounts() {
   const [query, setQuery] = useState('')
@@ -28,7 +28,7 @@ export default function Accounts() {
 
   return (
     <>
-      <PageHeader title="Accounts" note="Everyone who signed in with Google or GitHub, and Freighter owners.">
+      <PageHeader title="Accounts" note="Everyone who signed in with Google, GitHub or email, and Freighter owners.">
         <input
           type="search"
           value={query}
